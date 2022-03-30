@@ -25,8 +25,13 @@ import { Component } from '@angular/core';
     </ul>
     <router-outlet></router-outlet>
   `,
-  styles: []
+  styles: [
+    `div {
+      background: red;
+    }`
+  ]
 })
 export class AppComponent {
   title = 'frontend';
+
 }
