@@ -17,6 +17,8 @@ export class ProductCreateComponent implements OnInit {
     price: undefined
   }
 
+  validate: boolean = false;
+
   ngOnInit(): void {
     
   }
@@ -31,5 +33,8 @@ export class ProductCreateComponent implements OnInit {
   cancel() :void {
     this.router.navigate(['/products'])
   }
-
+  handleValidate() {
+    console.log('12')
+    this.validate = this.product.name != "" && this.product.price != undefined ? true : false;
+  }
 }

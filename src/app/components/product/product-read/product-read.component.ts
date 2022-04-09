@@ -10,7 +10,9 @@ import { ProductService } from '../product.service';
 export class ProductReadComponent implements OnInit {
 
   products: Product[];
-
+  
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['id', 'name', 'price', 'action'];
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {

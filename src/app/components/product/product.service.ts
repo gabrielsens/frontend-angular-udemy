@@ -15,11 +15,12 @@ export class ProductService {
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
-  showMensage(msg: string): void{
+  showMensage(msg: string, isError: boolean = false): void{
     this.snackBar.open(msg, 'X', {
       duration: 3000,
       horizontalPosition: "right",
-      verticalPosition: "top"
+      verticalPosition: "top",
+      panelClass: isError ? ['msg-error'] : ['msg-success']
     });
   }
 
@@ -32,4 +33,15 @@ export class ProductService {
     return this.http.get<Product[]>(this.base_url);
   }
 
+  readById(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.base_url}/${id}`)
+  }
+
+  update(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.base_url}/${product.id}`, product)
+  }
+
+  delete(id: string): Observable<Product> {
+    return this.http.delete<Product>(`${this.base_url}/${id}`);
+  }
 }
